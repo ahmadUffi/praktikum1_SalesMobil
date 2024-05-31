@@ -1,3 +1,207 @@
+cars = [
+    {
+        'Bestseller': [
+            {
+              "no" : "1",
+              'series' : "Mercedes Benz GLE-Class",
+              'price' : 28350000000,
+              'year' : 2024,
+            },
+            {
+              "no" : "2",
+              'series' : "BMW M3",
+              'price' : 2227000000,
+              'year' : 2020,
+            },
+            {
+              "no" : "3",
+              'series' : "Rolls Royce Phantom",
+              'price' : 2000000000000,
+              'year' : 2023,
+            }
+        ]
+    },
+    {
+        'Range rover': [
+            {
+              "no" : "1",
+              'series' : "Evoque",
+              'price' : 2300000000,
+              'year' : 2020,
+            },
+            {
+              "no" : "2",
+              'series' : "Velar",
+              'price' : 2816000000,
+              'year' : 2019,
+            },
+            {
+              "no" : "3",
+              'series' : "Discovery Sport",
+              'price' : 2119000000,
+              'year' : 2017,
+            }
+        ]    
+    },
+    {
+        'Bmw': [
+            {
+              "no" : "1",
+              'series' : "I5",
+              'price' : 20000000,
+              'year' : 2020,
+            },
+            {
+              "no" : "2",
+              'series' : "I3 Series",
+              'price' : 1080000000,
+              'year' : 2018,
+            },
+            {
+              "no" : "3",
+              'series' : "7 Series",
+              'price' : 1294000000,
+              'year' : 2022,
+            },
+            {
+              "no" : "4",
+              'series' : "I7",
+              'price' : 3330000000,
+              'year' : 2023,
+            }
+        ] 
+    },
+    {
+        'Tesla': [
+            {
+              "no" : "1",
+              'series' : "X Performance",
+              'price' : 3800000000,
+              'year' : 2024,
+            },
+            {
+              "no" : "2",
+              'series' : "Y Long Range",
+              'price' : 2000000000,
+              'year' : 2022,
+            },
+            {
+              "no" : "3",
+              'series' : "Model 3 Standar",
+              'price' : 1500000000,
+              'year' : 2022,
+            },
+            {
+              "no" : "4",
+              'series' : "Y Standar",
+              'price' : 2000000000,
+              'year' : 2022,
+            }
+        ] 
+    },
+    {
+        'Lamborghini': [
+            {
+              "no" : "1",
+              'series' : "Aventador",
+              'price' : 6400000000,
+              'year' : 2023,
+            },
+            {
+              "no" : "2",
+              'series' : "Huracan",
+              'price' : 2000000000,
+              'year' : 2013,
+            },
+            {
+              "no" : "3",
+              'series' : "Urus",
+              'price' : 8500000000,
+              'year' : 2019,
+            }
+        ] 
+    },
+    {
+        'Bugatti': [
+            {
+              "no" : "1",
+              'series' : "La Voiture Noire",
+              'price' : 278000000000,
+              'year' : 2019,
+            },
+            {
+              "no" : "2",
+              'series' : "Centodieci",
+              'price' : 139000000000,
+              'year' : 2022,
+            },
+            {
+              "no" : "3",
+              'series' : "Chiron Profilée",
+              'price' : 1500000000,
+              'year' : 2022,
+            },
+            {
+              "no" : "4",
+              'series' : "Chiron Super Sport",
+              'price' : 88000000000,
+              'year' : 2022,
+            }
+        ] 
+    },
+    {
+        'Ferrari': [
+            {
+              "no" : "1",
+              'series' : "F8 Tributo",
+              'price' : 7000000000,
+              'year' : 2024,
+            },
+            {
+              "no" : "2",
+              'series' : "812 Superfast",
+              'price' : 4300000000,
+              'year' : 2017,
+            },
+            {
+              "no" : "3",
+              'series' : "Portofino",
+              'price' : 5300000000,
+              'year' : 2017,
+            },
+            {
+              "no" : "4",
+              'series' : "California",
+              'price' : 6000000000,
+              'year' : 2014,
+            },
+            {
+              "no" : "5",
+              'series' : "458",
+              'price' : 6400000000,
+              'year' : 2009,
+            },
+            {
+              "no" : "6",
+              'series' : "488",
+              'price' : 7000000000,
+              'year' : 2015,
+            }
+        ]
+    }
+]
+
+
+name_guest = "Tuan"
+transaction = False
+car_id = 0
+car_year = 0
+car_series = ''
+car_price = 0
+car_brand = ''
+
+
+
 
 def clear_terminal():
   os.system('cls' if os.name == 'nt' else 'clear')
@@ -122,3 +326,13 @@ def page_transaction():
       break 
     else :
       print("Pilihan tidak tersedia, Coba Lagi")
+
+
+def start():
+  while not transaction :
+    ShowWelcome()
+    isTransaction()
+  page_transaction()
+
+greeting()
+start()
