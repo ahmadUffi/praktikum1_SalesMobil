@@ -8,7 +8,7 @@ _This project was created as part of the Programming Practicum 1 task, where stu
 
 ## Screenshot Preview
 
-![Gambar](https://i.ibb.co.com/QkrT0dr/Screenshot-116.png)
+![Gambar](https://i.ibb.co.com/ypWZ2SW/Screenshot-116.png)
 
 ## Table of Contents
 
