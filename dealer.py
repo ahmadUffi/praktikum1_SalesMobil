@@ -206,6 +206,27 @@ car_brand = ''
 def clear_terminal():
   os.system('cls' if os.name == 'nt' else 'clear')
   time.sleep(1)
+
+def showCar(id, car):
+    clear_terminal()
+    time.sleep(0.5)
+    cars_data = cars[id].get(car)
+    print("---------" +  ", ".join(list(cars[id].keys())) + "---------" )
+    headers = ["no", "Series", "Price", "Year"]
+    table_data = [[car['no'], car['series'], car['price'], car['year']] for car in cars_data]
+    print(tabulate(table_data, headers, tablefmt="rounded_outline"))
+
+def brand_partner():
+  nama_brand = []
+  for car in cars:
+    for name in car:
+      nama_brand.append(name.capitalize())
+  return nama_brand 
+
+def ShowWelcome():
+  showCar(0, "Bestseller")
+  list_brand()
+
 def otp(length):
   characters = string.ascii_letters + string.digits
   otp = ''.join(random.choice(characters) for i in range(length))
@@ -327,6 +348,39 @@ def page_transaction():
     else :
       print("Pilihan tidak tersedia, Coba Lagi")
 
+def inputDataUser():
+  clear_terminal()
+  print("Silahkan Lengkapi data Berikut Untuk Melanjutkan Transaksi")
+  time.sleep(1)
+  nama = input("Nama: ")
+  nohp = input("Nomor Handphone: ")
+  alamat = input("Alamat: ")
+
+  def InputData():
+    global car_id
+    global car_series
+    global car_year
+    global car_brand
+    tableTransaction = [
+        ['Nama', nama],
+        ['No Handphone', nohp],
+        ['Alamat', alamat],
+        ["Brand Mobil", car_brand],
+        ['Series Mobil', car_series],
+        ['Tahun Keluaran Mobil', car_year],
+        ["Harga Mobil", car_price]
+    ]
+    time.sleep(0.5)
+    print("---- Detail Transaction ----")
+    print(f'{Fore.BLUE}' + tabulate(tableTransaction, headers=['key', 'value'], tablefmt="rounded_outline"))
+    print("Kami Telah Mengirimkan pesan Pembayaran ke Nomor Anda, Silahkan Melakukan Pembayaran, Terimaksih!")
+    payment()
+  if not re.sub(r'\s+', '', nama).isalpha() or not nohp.isdigit() or len(nama) <= 1 or len(nohp) < 8 or len(alamat) <= 5:
+    print(Fore.RED + "Data yang anda masukan tidak valid. Nama harus berupa string, no hp harus berupa nomor (min 9) dan alamat harus sesuai (min5)!")
+    time.sleep(4)
+    inputDataUser()
+  else:
+    InputData() 
 
 def start():
   while not transaction :
