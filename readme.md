@@ -29,7 +29,7 @@ Running <br>
 
 ## Contributing
 
-_This project contribute by [Ahmad Uffi](https://github.com/ahmadUffi), Tegar Kang Ageng Gilang, [Ghaza Zidane Nurraihan](https://github.com/GHAzaZIDANE), and [Satria Ramadhan](https://github.com/Kuroi-RE)!_
+_This project contribute by [Ahmad Uffi](https://github.com/ahmadUffi), [Tegar Kang Ageng Gilang](https://github.com/tegar-gilang), [Ghaza Zidane Nurraihan](https://github.com/GHAzaZIDANE), and [Satria Ramadhan](https://github.com/Kuroi-RE)!_
 
 want to contributing?
 
