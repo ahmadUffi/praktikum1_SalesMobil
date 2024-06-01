@@ -1,3 +1,15 @@
+from tabulate import tabulate
+import random
+import re
+import string
+import time
+import os
+from colorama import Fore, Style, init
+from PIL import Image
+from tqdm import tqdm as loader
+
+init(autoreset=True)
+
 cars = [
     {
         'Bestseller': [
@@ -200,8 +212,18 @@ car_series = ''
 car_price = 0
 car_brand = ''
 
-
-
+def display_car(car):
+  cars = {
+    'bmw' : './img/bmw.jpg',
+    'buggati' : './img/buggati.jpg',
+    'ferrari' : './img/ferrari.jpg',
+    'lamborgini' : './img/lamborgini.jpg',
+    'mercedes' : './img/mercedes.jpg',
+    'range rover' : './img/rangerover.jpg',
+    'rollroyce' : './img/rollroyce.jpg',
+    'tesla' : './img/tesla.jpg' 
+  }
+  return cars.get(car.lower(), './img/default.jpg')
 
 def clear_terminal():
   os.system('cls' if os.name == 'nt' else 'clear')
@@ -283,8 +305,37 @@ def greeting():
   time.sleep(0.8)
   print("----Berikut Merupakan List Mobil yang kami Punya")  
   time.sleep(2.5)
-  
-  
+
+
+  def list_brand() :
+    brand = brand_partner()
+    print("---- Pilih Mobil inpianmu ----")
+    for i in range(len(brand)):
+      print(f"{i+1}. {brand[i]}")
+    choice()
+
+# 3
+def choice():
+    global car_id
+    global car_series
+    global car_brand
+    while True:
+        pilihan = input("Pilihanmu: ")
+        brand = brand_partner()
+        
+        if pilihan.isdigit():
+            pilihan = int(pilihan)
+            if 0 < pilihan <= len(brand):
+                idbrand = pilihan - 1
+                car_brand = brand[idbrand].upper()
+                showCar(idbrand, brand[idbrand])
+                car_id = idbrand
+                car_series = brand[idbrand]
+                break
+            else:
+                print("Pilihan tidak tersedia, Coba lagi")
+        else:
+            print("Pilihan tidak tersedia, Coba lagi")
   
 def isTransaction():
   global transaction
