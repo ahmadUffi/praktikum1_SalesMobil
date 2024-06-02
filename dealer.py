@@ -203,8 +203,7 @@ cars = [
     }
 ]
 
-
-name_guest = "Tuan"
+name_guest = ""
 transaction = False
 car_id = 0
 car_year = 0
@@ -229,14 +228,17 @@ def clear_terminal():
   os.system('cls' if os.name == 'nt' else 'clear')
   time.sleep(1)
 
+def formater(harga):
+  return "Rp{:,.0f}".format(harga).replace(",", ".")
+
 def showCar(id, car):
     clear_terminal()
     time.sleep(0.5)
     cars_data = cars[id].get(car)
     print("---------" +  ", ".join(list(cars[id].keys())) + "---------" )
-    headers = ["no", "Series", "Price", "Year"]
-    table_data = [[car['no'], car['series'], car['price'], car['year']] for car in cars_data]
-    print(tabulate(table_data, headers, tablefmt="rounded_outline"))
+    headers = ["\033[1;32;40mno\033[0m", "\033[1;32;40m Series\033[0m", "\033[1;32;40m Price\033[0m", "\033[1;32;40m Year\033[0m"]
+    table_data = [[car['no'], car['series'], formater(car['price']), car['year']] for car in cars_data]
+    print(tabulate(table_data, headers, tablefmt="heavy_grid"))
 
 def brand_partner():
   nama_brand = []
@@ -291,13 +293,17 @@ def payment():
 def greeting():
   clear_terminal()
   global name_guest
-  print('-----Hai Selamat Pagi Ada yang bisa kami bantu -----')
+  print('----- Hai Selamat Pagi Ada yang bisa kami bantu -----')
   time.sleep(0.6)
   print("-----Perkenal kan Nama saya MIMI saya akan memandu anda untuk memilih mobil impian anda------")
   time.sleep(0.6)
   print("----- sebelum lanjut, Jika Berkenan Boleh kah MIMI tahu Nama Anda ? ")
   
   name_guest = input("Siapakah Nama Anda: ")
+
+  if name_guest.strip() == '':
+    name_guest = "Tuan"   
+  
   time.sleep(0.6)
   print("Salam Kenal :)")
   print(f"Selamat Datang Saudara {name_guest} di Toko kami")
@@ -305,9 +311,10 @@ def greeting():
   time.sleep(0.8)
   print("----Berikut Merupakan List Mobil yang kami Punya")  
   time.sleep(2.5)
+  
 
 
-  def list_brand() :
+def list_brand() :
     brand = brand_partner()
     print("---- Pilih Mobil inpianmu ----")
     for i in range(len(brand)):
@@ -408,22 +415,18 @@ def inputDataUser():
   alamat = input("Alamat: ")
 
   def InputData():
-    global car_id
-    global car_series
-    global car_year
-    global car_brand
     tableTransaction = [
-        ['Nama', nama],
-        ['No Handphone', nohp],
-        ['Alamat', alamat],
-        ["Brand Mobil", car_brand],
-        ['Series Mobil', car_series],
-        ['Tahun Keluaran Mobil', car_year],
-        ["Harga Mobil", car_price]
+        ['\033[1;34;40mNama\033[0m', '\033[1;34;40m{}\033[0m'.format(nama)],
+        ['\033[1;34;40mNo Handphone\033[0m', '\033[1;34;40m{}\033[0m'.format(nohp)],
+        ['\033[1;34;40mAlamat\033[0m', '\033[1;34;40m{}\033[0m'.format(alamat)],
+        ['\033[1;34;40mBrand Mobil\033[0m', '\033[1;34;40m{}\033[0m'.format(car_brand)],
+        ['\033[1;34;40mSeries Mobil\033[0m', '\033[1;34;40m{}\033[0m'.format(car_series)],
+        ['\033[1;34;40mTahun Keluaran Mobil\033[0m', '\033[1;34;40m{}\033[0m'.format(car_year)],
+        ['\033[1;34;40mHarga Mobil\033[0m', '\033[1;34;40m{}\033[0m'.format(formater(car_price))]
     ]
     time.sleep(0.5)
     print("---- Detail Transaction ----")
-    print(f'{Fore.BLUE}' + tabulate(tableTransaction, headers=['key', 'value'], tablefmt="rounded_outline"))
+    print(tabulate(tableTransaction, headers=['\033[1;32;40m key\033[0m', '\033[1;32;40mvalue\033[0m'], tablefmt="rounded_outline"))
     print("Kami Telah Mengirimkan pesan Pembayaran ke Nomor Anda, Silahkan Melakukan Pembayaran, Terimaksih!")
     payment()
   if not re.sub(r'\s+', '', nama).isalpha() or not nohp.isdigit() or len(nama) <= 1 or len(nohp) < 8 or len(alamat) <= 5:
