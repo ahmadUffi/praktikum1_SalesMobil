@@ -203,6 +203,7 @@ cars = [
     }
 ]
 
+# zidan
 name_guest = ""
 transaction = False
 car_id = 0
@@ -211,6 +212,8 @@ car_series = ''
 car_price = 0
 car_brand = ''
 
+
+# gilang
 def display_car(car):
   cars = {
     'bmw' : './img/bmw.jpg',
@@ -224,13 +227,16 @@ def display_car(car):
   }
   return cars.get(car.lower(), './img/default.jpg')
 
+# uffi
 def clear_terminal():
   os.system('cls' if os.name == 'nt' else 'clear')
   time.sleep(1)
 
+# uffi
 def formater(harga):
   return "Rp{:,.0f}".format(harga).replace(",", ".")
 
+# satria
 def showCar(id, car):
     clear_terminal()
     time.sleep(0.5)
@@ -240,6 +246,8 @@ def showCar(id, car):
     table_data = [[car['no'], car['series'], formater(car['price']), car['year']] for car in cars_data]
     print(tabulate(table_data, headers, tablefmt="heavy_grid"))
 
+
+# Satria
 def brand_partner():
   nama_brand = []
   for car in cars:
@@ -247,16 +255,18 @@ def brand_partner():
       nama_brand.append(name.capitalize())
   return nama_brand 
 
+# Satria
 def ShowWelcome():
   showCar(0, "Bestseller")
   list_brand()
 
+# uffi
 def otp(length):
   characters = string.ascii_letters + string.digits
   otp = ''.join(random.choice(characters) for i in range(length))
   return otp
 
-
+# uffi
 def resend_otp() :
   print(Fore.RED + "Kode OTP salah, anda telah melewati batas percobaan.")
   print("1. Kirim ulang kode OTP")
@@ -270,6 +280,8 @@ def resend_otp() :
   else:
     print(Fore.RED + "Pilihan tidak tersedia, Coba lagi")
     resend_otp()
+    
+#satria
 def payment():
     chance = 3
     otp_code = otp(6)
@@ -290,6 +302,7 @@ def payment():
             else:
               resend_otp()
 
+# uffi
 def greeting():
   clear_terminal()
   global name_guest
@@ -314,6 +327,7 @@ def greeting():
   
 
 
+# gilang
 def list_brand() :
     brand = brand_partner()
     print("---- Pilih Mobil inpianmu ----")
@@ -321,7 +335,7 @@ def list_brand() :
       print(f"{i+1}. {brand[i]}")
     choice()
 
-# 3
+# gilang
 def choice():
     global car_id
     global car_series
@@ -343,7 +357,8 @@ def choice():
                 print("Pilihan tidak tersedia, Coba lagi")
         else:
             print("Pilihan tidak tersedia, Coba lagi")
-  
+ 
+# uffi
 def isTransaction():
   global transaction
   print("1. lanjut ke Pembelian")
@@ -363,7 +378,7 @@ def isTransaction():
     else :
         print("Pilihan tidak tersedia, Coba lagi")
   
-# 5
+# uffi
 def page_transaction():
   clear_terminal()
   global car_id
@@ -406,6 +421,8 @@ def page_transaction():
     else :
       print("Pilihan tidak tersedia, Coba Lagi")
 
+
+# Satria
 def inputDataUser():
   clear_terminal()
   print("Silahkan Lengkapi data Berikut Untuk Melanjutkan Transaksi")
@@ -436,6 +453,8 @@ def inputDataUser():
   else:
     InputData() 
 
+
+# Zidan
 def start():
   while not transaction :
     ShowWelcome()
